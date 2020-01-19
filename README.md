@@ -14,14 +14,14 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Node.js](https://nodejs.org/en/)
 - [React](https://reactjs.org/)
-- [Docker com imagem postgres](https://hub.docker.com/_/postgres)
 
 ## :computer: Desenvolvimento
 
-## ✋🏻 Pré-requisitos
+### Pré-requisitos
 
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/pt-BR/docs/install)
+- [Docker com imagem postgres](https://hub.docker.com/_/postgres)
 
 ### Backend
 
