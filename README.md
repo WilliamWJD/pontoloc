@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+</p>
+
 # PontoLoc
 
 Este software será utilizado para gerenciar os alugueis feitos pela empresa PontoLoc.
