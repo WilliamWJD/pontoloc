@@ -1,5 +1,4 @@
-# PontoLoc 💻
-
+# PontoLoc
 ## :rocket: Tecnologias
 
 - [Node.js](https://nodejs.org/en/)
