@@ -1,5 +1,5 @@
 import Client from '../models/Client';
-import Rent from '../models/Rent';
+import Contract from '../models/Contract';
 
 class ClientController {
   async store(req, res) {
@@ -33,27 +33,25 @@ class ClientController {
       return res.status(400).json({ error: 'Client does not exists' });
     }
 
-    if (req.body.cpf) {
-      const clientCPFused = await Client.findOne({
-        where: { cpf: req.body.cpf },
-      });
+    const { name, cpf, telefone, endereco } = req.body;
 
-      if (clientCPFused && clientCPFused.id !== Number(id)) {
-        return res.status(400).json({ error: 'CPF already registered' });
-      }
-    }
-
-    await Client.update(req.body, {
-      where: { id },
+    const clientCPFUsed = await Client.findOne({
+      where: { cpf: req.body.cpf },
     });
 
-    const { name, cpf, telefone, endereco } = await Client.findByPk(id);
+    if (clientCPFUsed && clientCPFUsed.id !== Number(id)) {
+      return res.status(400).json({ error: 'CPF already registered' });
+    }
+
+    await client.update({ name, cpf, telefone, endereco });
 
     return res.status(200).json({ id, name, cpf, telefone, endereco });
   }
 
   async index(req, res) {
-    const clients = await Client.findAll();
+    const clients = await Client.findAll({
+      attributes: ['id', 'name', 'cpf', 'telefone', 'endereco'],
+    });
 
     return res.json(clients);
   }
@@ -67,8 +65,8 @@ class ClientController {
       return res.status(400).json({ error: 'Client does not exists' });
     }
 
-    const rentExists = await Rent.findOne({ where: { client_id } });
-    if (rentExists) {
+    const orderExists = await Contract.findOne({ where: { client_id } });
+    if (orderExists) {
       return res.status(400).json({ error: 'This client has a rent register' });
     }
 
