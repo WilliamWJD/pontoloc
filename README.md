@@ -21,7 +21,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/pt-BR/docs/install)
-- [Docker com imagem postgres](https://hub.docker.com/_/postgres)
+- [Docker + postgres image](https://hub.docker.com/_/postgres)
 
 ### Backend
 
