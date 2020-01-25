@@ -8,4 +8,5 @@ export const Container = styled.div`
 
 export const RegisterButton = styled(Button)`
 	background: #ee4d64;
+	margin-right: 20px;
 `;
