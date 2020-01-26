@@ -9,6 +9,8 @@ export const Container = styled.button`
 	border: 0;
 	border-radius: 4px;
 
+	transition: background 0.2s;
+
 	display: flex;
 	text-align: center;
 	align-items: center;
