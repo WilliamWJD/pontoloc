@@ -9,6 +9,7 @@ import FormHeader from '~/components/FormHeader';
 import Input from '~/components/Input';
 import { formatPrice } from '~/util/format';
 
+import Modal from './Modal';
 import { Container, Content, RegisterButton, ListContract } from './styles';
 
 export default function Contracts() {
@@ -67,7 +68,7 @@ export default function Contracts() {
 								<small>{contract.client.name}</small>
 								<small>{contract.dateFormated}</small>
 								<small>{contract.priceFormated}</small>
-								<a href="https://github.com/eliasgcf">detalhes</a>
+								<Modal ContractId={contract.id} />
 							</div>
 						))}
 					</ListContract>

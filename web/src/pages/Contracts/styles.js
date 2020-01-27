@@ -34,37 +34,22 @@ export const ListContract = styled(ListContainer)`
 	display: flex;
 	flex-direction: column;
 
-	strong {
-		font-size: 16px;
-		color: #444;
-	}
-
-	strong + strong {
-		text-align: center;
-	}
-
-	small {
-		font-size: 16px;
-		color: #666;
-	}
-
-	small + small {
-		text-align: center;
-	}
-
-	a {
-		text-align: end;
-		font-size: 15px;
-		color: ${colors.info};
-	}
-
-	div {
+	> div {
 		display: grid;
 		grid-template-columns: 2fr 2fr 1fr 1fr;
 		grid-template-rows: 36px;
+
+		small {
+			font-size: 16px;
+			color: #666;
+		}
+
+		small + small {
+			text-align: center;
+		}
 	}
 
-	div + div {
+	> div + div {
 		border-top: 1px solid #eee;
 		padding-top: 20px;
 	}
@@ -73,5 +58,14 @@ export const ListContract = styled(ListContainer)`
 		display: grid;
 		grid-template-columns: 2fr 2fr 1fr 1fr;
 		grid-template-rows: 36px;
+
+		strong {
+			font-size: 16px;
+			color: #444;
+		}
+
+		strong + strong {
+			text-align: center;
+		}
 	}
 `;

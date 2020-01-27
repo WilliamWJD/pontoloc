@@ -14,10 +14,11 @@ export default function Input({ placeholder, Icon, ...props }) {
 }
 
 Input.propTypes = {
-	placeholder: PropTypes.string.isRequired,
+	placeholder: PropTypes.string,
 	Icon: PropTypes.func,
 };
 
 Input.defaultProps = {
 	Icon: null,
+	placeholder: '',
 };
