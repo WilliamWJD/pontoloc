@@ -6,7 +6,6 @@ import { Container } from './styles';
 
 export default function Button({ title, Icon, action, ...props }) {
 	return (
-		// eslint-disable-next-line react/jsx-props-no-spreading
 		<Container onClick={action} {...props}>
 			<Icon color="#fff" size={20} />
 			{title}
