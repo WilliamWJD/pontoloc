@@ -22,16 +22,45 @@ export const Name = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 650px;
+
+	strong {
+		font-size: 14px;
+		color: #444;
+		margin-bottom: 8px;
+	}
+
+	div {
+		input {
+			font-size: 16px;
+		}
+	}
 `;
 
 export const Date = styled.div`
-	width: 150px;
 	display: flex;
 	flex-direction: column;
 
+	strong {
+		font-size: 14px;
+		color: #444;
+		margin-bottom: 8px;
+	}
+
+	> div {
+		width: 130px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+	}
+
 	text-align: center;
-	input {
-		text-align: center;
+	div {
+		input {
+			text-align: center;
+			margin: 0;
+			font-size: 16px;
+		}
 	}
 `;
 
@@ -58,27 +87,11 @@ export const Container = styled.div`
 		width: 100%;
 		font-size: 15px;
 	}
+`;
 
-	div {
-		strong {
-			font-size: 14px;
-			color: #444;
-			margin-bottom: 8px;
-		}
+export const Material = styled.div`
+	> strong {
+		font-size: 14px;
+		color: #444;
 	}
-
-	/* > div {
-		margin-top: 20px;
-		display: flex;
-		justify-content: space-between;
-
-		strong {
-			font-size: 14px;
-			color: #444;
-		}
-
-		div {
-			margin-top: 8px;
-		}
-	} */
 `;

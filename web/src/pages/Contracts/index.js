@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MdAdd, MdSearch } from 'react-icons/md';
+import { MdAdd, MdSearch, MdSentimentDissatisfied } from 'react-icons/md';
 
 import { parseISO, format } from 'date-fns';
 
@@ -10,7 +10,13 @@ import Input from '~/components/Input';
 import { formatPrice } from '~/util/format';
 
 import Modal from './Modal';
-import { Container, Content, RegisterButton, ListContract } from './styles';
+import {
+	Container,
+	Content,
+	RegisterButton,
+	ListContract,
+	Mensage,
+} from './styles';
 
 export default function Contracts() {
 	const [contracts, setContracts] = useState([]);
@@ -72,7 +78,12 @@ export default function Contracts() {
 							</div>
 						))}
 					</ListContract>
-				) : null}
+				) : (
+					<Mensage>
+						<MdSentimentDissatisfied color="#ee4d64" size={70} />
+						<strong>NADA ENCONTRADO!</strong>
+					</Mensage>
+				)}
 			</Content>
 		</Container>
 	);

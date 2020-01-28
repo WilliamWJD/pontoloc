@@ -29,7 +29,7 @@ export const RegisterButton = styled(Button)`
 
 export const ListContract = styled(ListContainer)`
 	margin-top: 20px;
-	padding-bottom: 0;
+	padding-bottom: 10px;
 
 	display: flex;
 	flex-direction: column;
@@ -37,7 +37,7 @@ export const ListContract = styled(ListContainer)`
 	> div {
 		display: grid;
 		grid-template-columns: 2fr 2fr 1fr 1fr;
-		grid-template-rows: 36px;
+		padding-bottom: 20px;
 
 		small {
 			font-size: 16px;
@@ -54,10 +54,10 @@ export const ListContract = styled(ListContainer)`
 		padding-top: 20px;
 	}
 
-	section {
+	> section {
 		display: grid;
 		grid-template-columns: 2fr 2fr 1fr 1fr;
-		grid-template-rows: 36px;
+		padding-bottom: 20px;
 
 		strong {
 			font-size: 16px;
@@ -67,5 +67,20 @@ export const ListContract = styled(ListContainer)`
 		strong + strong {
 			text-align: center;
 		}
+	}
+`;
+
+export const Mensage = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	margin-top: 100px;
+
+	strong {
+		color: #444;
+		font-size: 16px;
+		padding-top: 30px;
 	}
 `;

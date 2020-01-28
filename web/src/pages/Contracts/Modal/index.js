@@ -10,7 +10,15 @@ import api from '~/services/api';
 import Input from '~/components/Input';
 import { formatPrice } from '~/util/format';
 
-import { ModalButton, Container, Date, Name, Content } from './styles';
+import MaterialList from './MaterialList';
+import {
+	ModalButton,
+	Container,
+	Date,
+	Name,
+	Content,
+	Material,
+} from './styles';
 
 export default function Modal({ ContractId }) {
 	const [contract, setContract] = useState({});
@@ -21,7 +29,11 @@ export default function Modal({ ContractId }) {
 		const data = {
 			...response.data,
 			dateFormated: format(parseISO(response.data.createdAt), 'dd/MM/yyyy'),
-			priceFormated: formatPrice(response.price_total_day),
+			priceFormated: formatPrice(response.data.price_total_day),
+			items: response.data.items.map(item => ({
+				...item,
+				price_quantity_day_formated: formatPrice(item.price_quantity_day),
+			})),
 		};
 
 		setContract(data);
@@ -57,9 +69,12 @@ export default function Modal({ ContractId }) {
 						<Input disabled value={contract?.dateFormated} />
 					</Date>
 				</Content>
-				<div>
-					<strong>MATERIAIS ADICIONADOS</strong>
-				</div>
+				{contract?.items?.length !== 0 ? (
+					<Material>
+						<strong>MATERIAIS ADICIONADOS</strong>
+						<MaterialList data={contract} />
+					</Material>
+				) : null}
 			</Container>
 		</Popup>
 	);
