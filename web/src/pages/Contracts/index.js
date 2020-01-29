@@ -7,16 +7,11 @@ import api from '~/services/api';
 
 import FormHeader from '~/components/FormHeader';
 import Input from '~/components/Input';
+import Message from '~/components/Message';
 import { formatPrice } from '~/util/format';
 
 import Modal from './Modal';
-import {
-	Container,
-	Content,
-	RegisterButton,
-	ListContract,
-	Mensage,
-} from './styles';
+import { Container, Content, RegisterButton, ListContract } from './styles';
 
 export default function Contracts() {
 	const [contracts, setContracts] = useState([]);
@@ -69,20 +64,21 @@ export default function Contracts() {
 							<strong>DATA DE RETIRADA</strong>
 							<strong>DIÁRIA</strong>
 						</section>
-						{contracts.map(contract => (
-							<div key={contract.id}>
-								<small>{contract.client.name}</small>
-								<small>{contract.dateFormated}</small>
-								<small>{contract.priceFormated}</small>
-								<Modal ContractId={contract.id} />
+						{contracts?.map(contract => (
+							<div key={contract?.id}>
+								<small>{contract?.client.name}</small>
+								<small>{contract?.dateFormated}</small>
+								<small>{contract?.priceFormated}</small>
+								<Modal ContractId={contract?.id} />
 							</div>
 						))}
 					</ListContract>
 				) : (
-					<Mensage>
-						<MdSentimentDissatisfied color="#ee4d64" size={70} />
-						<strong>NADA ENCONTRADO!</strong>
-					</Mensage>
+					<Message
+						Icon={MdSentimentDissatisfied}
+						color="#ee4d64"
+						title="NADA ENCONTRADO!"
+					/>
 				)}
 			</Content>
 		</Container>

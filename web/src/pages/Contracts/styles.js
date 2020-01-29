@@ -34,8 +34,23 @@ export const ListContract = styled(ListContainer)`
 	margin-top: 20px;
 	padding-bottom: 10px;
 
-	display: flex;
-	flex-direction: column;
+	> section {
+		display: grid;
+		grid-template-columns: 2fr 2fr 1fr 1fr;
+		padding-bottom: 20px;
+
+		strong {
+			font-size: 16px;
+			color: #444;
+		}
+
+		strong + strong {
+			text-align: center;
+		}
+	}
+
+	/* display: flex;
+	flex-direction: column; */
 
 	> div {
 		display: grid;
@@ -55,35 +70,5 @@ export const ListContract = styled(ListContainer)`
 	> div + div {
 		border-top: 1px solid #eee;
 		padding-top: 20px;
-	}
-
-	> section {
-		display: grid;
-		grid-template-columns: 2fr 2fr 1fr 1fr;
-		padding-bottom: 20px;
-
-		strong {
-			font-size: 16px;
-			color: #444;
-		}
-
-		strong + strong {
-			text-align: center;
-		}
-	}
-`;
-
-export const Mensage = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-
-	margin-top: 100px;
-
-	strong {
-		color: #444;
-		font-size: 16px;
-		padding-top: 30px;
 	}
 `;
