@@ -21,7 +21,7 @@ export default function MaterialList({ data }) {
 			))}
 			<Total>
 				<h3>TOTAL:</h3>
-				<small>{data.priceFormated}</small>
+				<small>{data.priceDay}</small>
 			</Total>
 		</Container>
 	);
@@ -29,7 +29,7 @@ export default function MaterialList({ data }) {
 
 MaterialList.propTypes = {
 	data: PropTypes.shape({
-		priceFormated: PropTypes.string,
+		priceDay: PropTypes.string,
 		items: PropTypes.array,
 	}).isRequired,
 };

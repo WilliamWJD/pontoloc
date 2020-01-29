@@ -14,10 +14,11 @@ import MaterialList from './MaterialList';
 import {
 	ModalButton,
 	Container,
-	Date,
+	Label,
 	Name,
-	Content,
+	Title,
 	Material,
+	FinalPrice,
 } from './styles';
 
 export default function Modal({ ContractId }) {
@@ -28,8 +29,14 @@ export default function Modal({ ContractId }) {
 
 		const data = {
 			...response.data,
-			dateFormated: format(parseISO(response.data.createdAt), 'dd/MM/yyyy'),
-			priceFormated: formatPrice(response.data.price_total_day),
+			getDate: format(parseISO(response.data.createdAt), 'dd/MM/yyyy'),
+			devolutionDate: response.data.returned_at
+				? format(parseISO(response.data.returned_at), 'dd/MM/yyyy')
+				: '__/__/____',
+			priceDay: formatPrice(response.data.price_total_day),
+			deliveryPriceFormated: formatPrice(response.data.delivery_price),
+			priceColletFormated: formatPrice(response.data.collet_price),
+			priceFinalFormated: formatPrice(response.data.final_price),
 			items: response.data.items.map(item => ({
 				...item,
 				price_quantity_day_formated: formatPrice(item.price_quantity_day),
@@ -57,25 +64,46 @@ export default function Modal({ ContractId }) {
 				padding: '30px',
 			}}
 		>
-			<Container>
-				<strong>#Nº {ContractId}</strong>
-				<Content>
+			<div>
+				<Title>#Nº {ContractId}</Title>
+				<Container>
 					<Name>
 						<strong>LOCATÁRIO</strong>
 						<Input disabled value={contract?.client?.name} />
 					</Name>
-					<Date>
+					<Label>
 						<strong>DATA DE RETIRADA</strong>
-						<Input disabled value={contract?.dateFormated} />
-					</Date>
-				</Content>
-				{contract?.items?.length !== 0 ? (
-					<Material>
-						<strong>MATERIAIS ADICIONADOS</strong>
-						<MaterialList data={contract} />
-					</Material>
-				) : null}
-			</Container>
+						<Input disabled value={contract?.getDate} />
+					</Label>
+					<Label>
+						<strong>DATA DE DEVOLUÇÃO</strong>
+						<Input disabled value={contract?.devolutionDate} />
+					</Label>
+
+					<div>
+						{contract?.items?.length !== 0 ? (
+							<Material>
+								<strong>MATERIAIS ADICIONADOS</strong>
+								<MaterialList data={contract} />
+							</Material>
+						) : null}
+					</div>
+					<Label>
+						<strong>ENTREGA</strong>
+						<Input disabled value={contract?.deliveryPriceFormated} />
+					</Label>
+					<Label style={{ justifyContent: 'space-between' }}>
+						<Label style={{ display: 'flex', flexDirection: 'column' }}>
+							<strong>COLETA</strong>
+							<Input disabled value={contract?.priceColletFormated} />
+						</Label>
+						<FinalPrice>
+							<strong>PREÇO FINAL</strong>
+							<Input disabled value={contract?.priceFinalFormated} />
+						</FinalPrice>
+					</Label>
+				</Container>
+			</div>
 		</Popup>
 	);
 }
