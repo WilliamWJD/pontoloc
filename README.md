@@ -6,9 +6,7 @@
  PontoLoc
 </h2>
 
-<p align="center">
-Este software será utilizado para gerenciar os alugueis feitos pela empresa PontoLoc.
-</p>
+<p align="center">Este software será utilizado para gerenciar os alugueis feitos pela empresa PontoLoc.</p>
 
 <p align="center">
  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
