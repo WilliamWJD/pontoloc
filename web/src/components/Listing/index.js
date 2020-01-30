@@ -1,14 +1,51 @@
-import React from 'react';
+import styled from 'styled-components';
 
-import PropTypes from 'prop-types';
+const Listing = styled.div`
+	background: #fff;
+	width: 100%;
 
-import { Container } from './styles';
+	padding: 30px 30px 10px 30px;
+	border-radius: 4px;
 
-export default function Listing({ children, ...props }) {
-	return <Container {...props}>{children}</Container>;
-}
+	margin-top: 20px;
 
-Listing.propTypes = {
-	// eslint-disable-next-line react/forbid-prop-types
-	children: PropTypes.array.isRequired,
-};
+	> section {
+		display: grid;
+		grid-template-columns: 2fr 2fr 1fr 1fr;
+		padding-bottom: 20px;
+
+		strong {
+			font-size: 16px;
+			color: #444;
+		}
+
+		strong + strong {
+			text-align: center;
+		}
+	}
+
+	/* display: flex;
+	flex-direction: column; */
+
+	> div {
+		display: grid;
+		grid-template-columns: 2fr 2fr 1fr 1fr;
+		padding-bottom: 20px;
+
+		small {
+			font-size: 16px;
+			color: #666;
+		}
+
+		small + small {
+			text-align: center;
+		}
+	}
+
+	> div + div {
+		border-top: 1px solid #eee;
+		padding-top: 20px;
+	}
+`;
+
+export default Listing;
