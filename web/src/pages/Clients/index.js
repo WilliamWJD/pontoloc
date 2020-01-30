@@ -12,10 +12,13 @@ import { Container, Content, RegisterButton, ListClient } from './styles';
 
 export default function Clients() {
 	const [clients, setClients] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	async function loadClients() {
+		setLoading(true);
 		const response = await api.get('clients');
 
+		setLoading(false);
 		setClients(response.data);
 	}
 
@@ -48,28 +51,35 @@ export default function Clients() {
 					</div>
 				</FormHeader>
 
-				{clients.length !== 0 ? (
-					<ListClient>
-						<section>
-							<strong>NOME</strong>
-							<strong>CPF</strong>
-							<strong>TELEFONE</strong>
-						</section>
-						{clients.map(client => (
-							<div key={client.id}>
-								<small>{client.name}</small>
-								<small>{client.cpf}</small>
-								<small>{client.telefone}</small>
-								<Link to="/clients">editar</Link>
-							</div>
-						))}
-					</ListClient>
+				{loading ? (
+					<Message loading />
 				) : (
-					<Message
-						Icon={MdSentimentDissatisfied}
-						color="#ee4d64"
-						title="NADA ENCONTRADO!"
-					/>
+					<>
+						{clients.length !== 0 ? (
+							<ListClient>
+								<section>
+									<strong>NOME</strong>
+									<strong>CPF</strong>
+									<strong>TELEFONE</strong>
+								</section>
+								{clients.map(client => (
+									<div key={client.id}>
+										<small>{client.name}</small>
+										<small>{client.cpf}</small>
+										<small>{client.telefone}</small>
+										<Link to="/clients">editar</Link>
+									</div>
+								))}
+							</ListClient>
+						) : (
+							<Message
+								loading={false}
+								Icon={MdSentimentDissatisfied}
+								color="#ee4d64"
+								title="NADA ENCONTRADO!"
+							/>
+						)}
+					</>
 				)}
 			</Content>
 		</Container>

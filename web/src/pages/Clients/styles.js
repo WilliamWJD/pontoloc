@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import Button from '~/components/Button';
-import ListContainer from '~/components/ListContainer';
+import ListingClient from '~/components/Listing';
 import colors from '~/styles/colors';
 
 export const Container = styled.div`
@@ -30,7 +30,17 @@ export const RegisterButton = styled(Button)`
 	}
 `;
 
-export const ListClient = styled(ListContainer)`
+export const ListClient = styled(ListingClient)`
+	div {
+		a {
+			text-align: right;
+			font-size: 15px;
+			color: ${colors.info};
+		}
+	}
+`;
+
+/* export const ListClient = styled(ListContainer)`
 	margin-top: 20px;
 	padding-bottom: 10px;
 
@@ -74,4 +84,4 @@ export const ListClient = styled(ListContainer)`
 		border-top: 1px solid #eee;
 		padding-top: 20px;
 	}
-`;
+`; */

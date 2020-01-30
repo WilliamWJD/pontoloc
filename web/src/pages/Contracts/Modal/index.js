@@ -69,15 +69,15 @@ export default function Modal({ ContractId }) {
 				<Container>
 					<Name>
 						<strong>LOCATÁRIO</strong>
-						<Input disabled value={contract?.client?.name} />
+						<Input disabled value={contract?.client?.name || ''} />
 					</Name>
 					<Label>
 						<strong>DATA DE RETIRADA</strong>
-						<Input disabled value={contract?.getDate} />
+						<Input disabled value={contract?.getDate || ''} />
 					</Label>
 					<Label>
 						<strong>DATA DE DEVOLUÇÃO</strong>
-						<Input disabled value={contract?.devolutionDate} />
+						<Input disabled value={contract?.devolutionDate || ''} />
 					</Label>
 
 					<div>
@@ -90,16 +90,16 @@ export default function Modal({ ContractId }) {
 					</div>
 					<Label>
 						<strong>ENTREGA</strong>
-						<Input disabled value={contract?.deliveryPriceFormated} />
+						<Input disabled value={contract?.deliveryPriceFormated || ''} />
 					</Label>
 					<Label style={{ justifyContent: 'space-between' }}>
 						<Label style={{ display: 'flex', flexDirection: 'column' }}>
 							<strong>COLETA</strong>
-							<Input disabled value={contract?.priceColletFormated} />
+							<Input disabled value={contract?.priceColletFormated || ''} />
 						</Label>
 						<FinalPrice>
 							<strong>PREÇO FINAL</strong>
-							<Input disabled value={contract?.priceFinalFormated} />
+							<Input disabled value={contract?.priceFinalFormated || ''} />
 						</FinalPrice>
 					</Label>
 				</Container>

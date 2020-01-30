@@ -7,16 +7,19 @@ import api from '~/services/api';
 
 import FormHeader from '~/components/FormHeader';
 import Input from '~/components/Input';
+import ListingContract from '~/components/Listing';
 import Message from '~/components/Message';
 import { formatPrice } from '~/util/format';
 
 import Modal from './Modal';
-import { Container, Content, RegisterButton, ListContract } from './styles';
+import { Container, Content, RegisterButton } from './styles';
 
 export default function Contracts() {
 	const [contracts, setContracts] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	async function loadContracts() {
+		setLoading(true);
 		const response = await api.get('/contracts');
 
 		const data = response.data.map(contract => ({
@@ -25,6 +28,7 @@ export default function Contracts() {
 			priceFormated: formatPrice(contract.price_total_day),
 		}));
 
+		setLoading(false);
 		setContracts(data);
 	}
 
@@ -57,28 +61,35 @@ export default function Contracts() {
 					</div>
 				</FormHeader>
 
-				{contracts.length !== 0 ? (
-					<ListContract>
-						<section>
-							<strong>NOME</strong>
-							<strong>DATA DE RETIRADA</strong>
-							<strong>DIÁRIA</strong>
-						</section>
-						{contracts?.map(contract => (
-							<div key={contract?.id}>
-								<small>{contract?.client.name}</small>
-								<small>{contract?.dateFormated}</small>
-								<small>{contract?.priceFormated}</small>
-								<Modal ContractId={contract?.id} />
-							</div>
-						))}
-					</ListContract>
+				{loading ? (
+					<Message loading />
 				) : (
-					<Message
-						Icon={MdSentimentDissatisfied}
-						color="#ee4d64"
-						title="NADA ENCONTRADO!"
-					/>
+					<>
+						{contracts.length !== 0 ? (
+							<ListingContract>
+								<section>
+									<strong>NOME</strong>
+									<strong>DATA DE RETIRADA</strong>
+									<strong>DIÁRIA</strong>
+								</section>
+								{contracts?.map(contract => (
+									<div key={contract?.id}>
+										<small>{contract?.client.name}</small>
+										<small>{contract?.dateFormated}</small>
+										<small>{contract?.priceFormated}</small>
+										<Modal ContractId={contract?.id} />
+									</div>
+								))}
+							</ListingContract>
+						) : (
+							<Message
+								Icon={MdSentimentDissatisfied}
+								loading={false}
+								color="#ee4d64"
+								title="NADA ENCONTRADO!"
+							/>
+						)}
+					</>
 				)}
 			</Content>
 		</Container>
