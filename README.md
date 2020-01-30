@@ -2,9 +2,9 @@
   <img alt="PontoLoc" title="Pontoloc" src=".github/logo.png" width="300px" />
 </h1>
 
-<h2 align="center">
+<h3 align="center">
  PontoLoc
-</h2>
+</h3>
 
 <p align="center">Este software será utilizado para gerenciar os alugueis feitos pela empresa PontoLoc.</p>
 
