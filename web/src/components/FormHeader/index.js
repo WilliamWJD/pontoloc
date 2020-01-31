@@ -15,5 +15,5 @@ export default function FormHeader({ title, children }) {
 
 FormHeader.propTypes = {
 	title: PropTypes.string.isRequired,
-	children: PropTypes.element.isRequired,
+	children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };

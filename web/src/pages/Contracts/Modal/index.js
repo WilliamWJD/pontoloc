@@ -7,7 +7,7 @@ import { format, parseISO } from 'date-fns';
 
 import api from '~/services/api';
 
-import Input from '~/components/Input';
+import { InputWithIcon as Input } from '~/components/Input';
 import { formatPrice } from '~/util/format';
 
 import MaterialList from './MaterialList';

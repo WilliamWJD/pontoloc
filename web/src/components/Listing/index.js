@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Listing = styled.div`
+export default styled.div`
 	background: #fff;
 	width: 100%;
 
@@ -47,5 +47,3 @@ const Listing = styled.div`
 		padding-top: 20px;
 	}
 `;
-
-export default Listing;

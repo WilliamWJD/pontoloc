@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { MdAdd, MdSearch, MdSentimentDissatisfied } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import api from '~/services/api';
+import history from '~/services/history';
 
 import FormHeader from '~/components/FormHeader';
-import Input from '~/components/Input';
+import { InputWithIcon } from '~/components/Input';
 import Message from '~/components/Message';
 
 import { Container, Content, RegisterButton, ListClient } from './styles';
@@ -15,11 +17,16 @@ export default function Clients() {
 	const [loading, setLoading] = useState(false);
 
 	async function loadClients() {
-		setLoading(true);
-		const response = await api.get('clients');
+		try {
+			setLoading(true);
+			const response = await api.get('clients');
 
+			setLoading(false);
+			setClients(response.data);
+		} catch (error) {
+			toast.error('Servidor indisponível no momento!');
+		}
 		setLoading(false);
-		setClients(response.data);
 	}
 
 	function handleSearchName(e) {
@@ -41,14 +48,16 @@ export default function Clients() {
 		<Container>
 			<Content>
 				<FormHeader title="Gerenciando clientes">
-					<div>
-						<RegisterButton title="CADASTRAR" Icon={MdAdd} action={() => {}} />
-						<Input
-							placeholder="Buscar cliente"
-							Icon={MdSearch}
-							onChange={handleSearchName}
-						/>
-					</div>
+					<RegisterButton
+						title="CADASTRAR"
+						Icon={MdAdd}
+						action={() => history.push('/clients/register')}
+					/>
+					<InputWithIcon
+						placeholder="Buscar cliente"
+						Icon={MdSearch}
+						onChange={handleSearchName}
+					/>
 				</FormHeader>
 
 				{loading ? (

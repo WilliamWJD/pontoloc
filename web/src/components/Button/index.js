@@ -2,14 +2,14 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Container } from './styles';
+import { Container as ContainerButton } from './styles';
 
 export default function Button({ title, Icon, action, ...props }) {
 	return (
-		<Container onClick={action} {...props}>
+		<ContainerButton onClick={action} {...props}>
 			<Icon color="#fff" size={20} />
 			{title}
-		</Container>
+		</ContainerButton>
 	);
 }
 
