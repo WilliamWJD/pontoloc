@@ -26,19 +26,11 @@ export default function ClientForm() {
 			resetForm();
 			toast.success('Cliente cadastrado com sucesso!');
 		} catch (error) {
-			// if (error.response.status === 400) {
-			// 	toast.error('Cliente já cadastrado');
-			// } else {
-			// 	toast.error('Error ao conecter o servidor!');
-			// }
-			if (error.message === 'Network Error') {
+			if (!error.response) {
 				toast.error('Servidor indisponível no momento!');
 			} else {
 				toast.error('Cliente já cadastrado!');
 			}
-			console.log(JSON.parse(JSON.stringify(error)));
-			console.log(error.response);
-
 			resetForm();
 		}
 	}
@@ -74,9 +66,9 @@ export default function ClientForm() {
 							<section>
 								<strong>CPF</strong>
 								<InputMask
-									mask="999/999/999-99"
+									mask="999.999.999-99"
 									name="cpf"
-									placeholder="Ex.: 000/000/000-00"
+									placeholder="Ex.: 000.000.000-00"
 									required
 								/>
 							</section>
