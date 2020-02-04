@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-import { Form as UnForm } from '@rocketseat/unform';
-
 import Button from '~/components/Button';
+import UnForm from '~/components/Form';
 import colors from '~/styles/colors';
 
 export const Container = styled.div`
@@ -57,6 +56,12 @@ export const Form = styled(UnForm)`
 			section:nth-child(2) {
 				max-width: 270px;
 				width: 100%;
+			}
+		}
+
+		div:last-child {
+			section {
+				margin-bottom: 0;
 			}
 		}
 	}

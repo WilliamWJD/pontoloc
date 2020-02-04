@@ -2,6 +2,8 @@ import React from 'react';
 import { MdAdd, MdKeyboardArrowLeft } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
+import * as Yup from 'yup';
+
 import api from '~/services/api';
 import history from '~/services/history';
 
@@ -9,6 +11,13 @@ import FormHeader from '~/components/FormHeader';
 import { Input, InputMask } from '~/components/Input';
 
 import { Container, Content, SaveButton, BackButton, Form } from './styles';
+
+const schema = Yup.object().shape({
+	name: Yup.string().required('Nome é obrigatório'),
+	cpf: Yup.string().required('CPF é obrigatório'),
+	endereco: Yup.string().required('Endereço é obrigatório'),
+	telefone: Yup.string().required('Telefone é obrigatório'),
+});
 
 export default function ClientForm() {
 	async function handleSubmit(
@@ -29,9 +38,8 @@ export default function ClientForm() {
 			if (!error.response) {
 				toast.error('Servidor indisponível no momento!');
 			} else {
-				toast.error('Cliente já cadastrado!');
+				toast.error(error.response.data.error);
 			}
-			resetForm();
 		}
 	}
 
@@ -52,7 +60,7 @@ export default function ClientForm() {
 					/>
 				</FormHeader>
 
-				<Form id="form" onSubmit={handleSubmit}>
+				<Form id="form" schema={schema} onSubmit={handleSubmit}>
 					<div>
 						<div>
 							<section>
@@ -60,7 +68,6 @@ export default function ClientForm() {
 								<Input
 									name="name"
 									placeholder="Ex.: Elias Gabriel da Cruz Figueredo"
-									required
 								/>
 							</section>
 							<section>
@@ -69,7 +76,6 @@ export default function ClientForm() {
 									mask="999.999.999-99"
 									name="cpf"
 									placeholder="Ex.: 000.000.000-00"
-									required
 								/>
 							</section>
 						</div>
@@ -79,7 +85,6 @@ export default function ClientForm() {
 								<Input
 									name="endereco"
 									placeholder="Ex.: Rua Mato Grosso, 108, Alto Sobradinho"
-									required
 								/>
 							</section>
 							<section>
@@ -88,7 +93,6 @@ export default function ClientForm() {
 									mask="(99) 9 9999-9999"
 									name="telefone"
 									placeholder="(00) 0 0000-0000"
-									required
 								/>
 							</section>
 						</div>
