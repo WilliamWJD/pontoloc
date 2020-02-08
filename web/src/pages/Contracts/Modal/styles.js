@@ -26,7 +26,7 @@ export const Title = styled.strong`
 export const Name = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 425px;
+	width: 550px;
 
 	strong {
 		font-size: 14px;
@@ -75,7 +75,7 @@ export const Container = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-row-gap: 20px;
-	grid-column-gap: 45px;
+	grid-column-gap: 40px;
 
 	input {
 		width: 100%;

@@ -10,12 +10,14 @@ export default function MaterialList({ data }) {
 			<div>
 				<strong>MATERIAL</strong>
 				<strong>QUANTIDADE</strong>
+				<strong>VALOR UNITÁRIO</strong>
 				<strong>DIÁRIA</strong>
 			</div>
 			{data?.items?.map(item => (
 				<div key={item.id}>
 					<small>{item.material.name}</small>
 					<small>{item.quantity}</small>
+					<small>{item.material.price_day_formated}</small>
 					<small>{item.price_quantity_day_formated}</small>
 				</div>
 			))}

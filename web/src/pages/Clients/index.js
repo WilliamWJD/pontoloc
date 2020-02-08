@@ -76,7 +76,9 @@ export default function Clients() {
 										<small>{client.name}</small>
 										<small>{client.cpf}</small>
 										<small>{client.telefone}</small>
-										<Link to="/clients">editar</Link>
+										<Link to={{ pathname: `/clients/register/${client.id}` }}>
+											editar
+										</Link>
 									</div>
 								))}
 							</ListClient>

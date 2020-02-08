@@ -7,7 +7,7 @@ export const Container = styled.div`
 	flex-direction: column;
 
 	margin-top: 8px;
-	width: 425px;
+	width: 550px;
 	padding: 20px 30px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
@@ -20,9 +20,15 @@ export const Container = styled.div`
 		text-align: center;
 	}
 
+	small {
+		margin: auto 0;
+		overflow: hidden;
+		word-wrap: break-word;
+	}
+
 	div {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: 1fr 1fr 2fr 1fr;
 		grid-column-gap: 15px;
 		padding-bottom: 20px;
 	}
@@ -35,15 +41,15 @@ export const Container = styled.div`
 
 export const Total = styled.section`
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 2fr 1fr;
 	grid-column-gap: 15px;
 
 	padding-top: 10px;
 
 	h3 {
 		font-size: 16px;
-		grid-column-start: 2;
-		grid-column-end: 3;
+		grid-column-start: 3;
+		grid-column-end: 4;
 		text-align: right;
 		color: ${colors.primary};
 	}

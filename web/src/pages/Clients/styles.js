@@ -35,6 +35,8 @@ export const ListClient = styled(ListingClient)`
 		a {
 			text-align: right;
 			font-size: 15px;
+			width: 40px;
+			margin-left: 150px;
 			color: ${colors.info};
 		}
 	}
