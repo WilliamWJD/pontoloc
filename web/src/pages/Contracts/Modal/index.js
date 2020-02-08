@@ -39,6 +39,10 @@ export default function Modal({ ContractId }) {
 			priceFinalFormated: formatPrice(response.data.final_price),
 			items: response.data.items.map(item => ({
 				...item,
+				material: {
+					...item.material,
+					price_day_formated: formatPrice(item.material.price_day),
+				},
 				price_quantity_day_formated: formatPrice(item.price_quantity_day),
 			})),
 		};
@@ -58,7 +62,7 @@ export default function Modal({ ContractId }) {
 			onOpen={handleContract}
 			closeOnDocumentClick
 			contentStyle={{
-				width: '900px',
+				width: '1000px',
 				borderRadius: '4px',
 				border: '1px solid #eee',
 				padding: '30px',
