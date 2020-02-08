@@ -21,7 +21,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Docker Compose](https://docs.docker.com/compose/)
 - [PostgreSQL](https://www.postgresql.org/)
 
-## :computer: Desenvolvimento
+## :computer: Instalação, execução e desenvolvimento
+
+- Faça um clone desse repositório.
 
 ### Pré-requisitos
 
@@ -29,10 +31,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Docker Compose](https://docs.docker.com/compose/)
 
 ### Backend
-
-- Faça um clone desse repositório.
-- Entre na pasta `cd server`
-- Rode `cp .env.example .env` e preencha com SUAS variáveis ambiente.
+- A partir da raiz do projeto, entre na pasta rodando `cd server`;
+- Rode `cp .env.example .env` e preencha o arquivo `.env` com SUAS variáveis ambiente;
 - Rode `docker-compose up -d` para montar o ambiente.
 - Rode `yarn sequelize db:create` para criar o banco de dados.
 - Rode `yarn sequelize db:migrate` para executar as migrations.
