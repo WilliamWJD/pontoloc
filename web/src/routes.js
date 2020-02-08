@@ -14,7 +14,9 @@ export default function Routes() {
 			<Route path="/contracts" component={Contracts} />
 
 			<Route path="/clients" exact component={Clients} />
-			<Route path="/clients/register" component={ClientsRegister} />
+			<Route path="/clients/register" exact component={ClientsRegister} />
+
+			<Route path="/clients/register/:id" component={ClientsRegister} />
 
 			<Route path="/materials" component={Materials} />
 		</Switch>

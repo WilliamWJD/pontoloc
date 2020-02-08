@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdAdd, MdKeyboardArrowLeft } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 
 import api from '~/services/api';
@@ -19,21 +20,45 @@ const schema = Yup.object().shape({
 	telefone: Yup.string().required('Telefone é obrigatório'),
 });
 
-export default function ClientForm() {
+export default function ClientForm({ match }) {
+	const { id } = match.params;
+	const [initialData, setInitialData] = useState({});
+
+	useEffect(() => {
+		async function loadInitialData() {
+			const response = await api.get(`/clients/${id}`);
+			setInitialData(response.data);
+		}
+
+		if (id) {
+			loadInitialData();
+		}
+	}, [id]);
+
 	async function handleSubmit(
 		{ name, cpf, endereco, telefone },
 		{ resetForm }
 	) {
 		try {
-			await api.post('/clients', {
-				name,
-				cpf,
-				endereco,
-				telefone,
-			});
+			if (!id) {
+				await api.post('/clients', {
+					name,
+					cpf,
+					endereco,
+					telefone,
+				});
+				toast.success('Cliente cadastrado com sucesso!');
+			} else {
+				await api.put(`/clients/${id}`, {
+					name,
+					cpf,
+					endereco,
+					telefone,
+				});
+				toast.success('Cliente atualizado com sucesso!');
+			}
 
 			resetForm();
-			toast.success('Cliente cadastrado com sucesso!');
 		} catch (error) {
 			if (!error.response) {
 				toast.error('Servidor indisponível no momento!');
@@ -60,7 +85,12 @@ export default function ClientForm() {
 					/>
 				</FormHeader>
 
-				<Form id="form" schema={schema} onSubmit={handleSubmit}>
+				<Form
+					id="form"
+					schema={schema}
+					onSubmit={handleSubmit}
+					initialData={initialData}
+				>
 					<div>
 						<div>
 							<section>
@@ -102,3 +132,19 @@ export default function ClientForm() {
 		</Container>
 	);
 }
+
+ClientForm.propTypes = {
+	match: PropTypes.shape({
+		params: PropTypes.shape({
+			id: PropTypes.string,
+		}),
+	}),
+};
+
+ClientForm.defaultProps = {
+	match: {
+		params: {
+			id: null,
+		},
+	},
+};
